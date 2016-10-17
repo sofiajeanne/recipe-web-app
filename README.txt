@@ -1,0 +1,1 @@
+A SQLite, Sinatra, and DataMapper project to manage recipes.
