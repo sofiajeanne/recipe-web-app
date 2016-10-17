@@ -1,14 +1,34 @@
 <% @recipes.each do |recipe| %>
-  <h3><b><%= recipe.title %></b></h3>
-  <br>
-    <% @recipe_ingredients = @ingredients.select{|ingredient| ingredient[:recipe_id] == recipe[:id]} %>
-    <% @recipe_ingredients.each do |ingredient| %>
-      <ul>
-        <li><%= ingredient.name %></li>
-      </ul>
-    <% end %>
+  
+  <% @recipe_ingredients = [] %>
+  <% @ingredient_ids = [] %>
+  
+  <h3><%= recipe.title %></h3>
+
+  <% @select_relations = @relations.select{|rel| rel[:recipe_id] == recipe[:id]} %>
+
+  <% @select_relations.each do |rel| %>
+    <% @ingredient_ids << rel[:ingredient_id] %>
+  <% end %>
+  
+  <% @ingredient_ids.each do |id| %>
+      <% @ingredients.select{|ing| @ing = ing[:name] if ing[:id] == id} %>
+      <% @recipe_ingredients << @ing %>
+  <% end %>
+  
+  <% @hash = Hash[@ingredient_ids.zip @recipe_ingredients] %>
+
+  <% counter = 0 %>
+  <% @select_relations.each do |relation| %>
+    <ul>
+      <li><%= relation.amount %>
+      <%= relation.unit %>
+      <% @ing_id = relation[:ingredient_id] %>
+      <%= @hash[@ing_id] %></li>
+    </ul>
+  <% end %>
   <br>
   <p><%= recipe.instructions %></p>
-  <p class="meta">Created: <%= recipe.created_at %></p>
   <br>
+  <hr>
 <% end %>
