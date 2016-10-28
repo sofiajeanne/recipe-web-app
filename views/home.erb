@@ -1,34 +1,79 @@
+<form action='/' method='POST'>
+
+  <span>Recipe Name</span> <br>
+  <div id='recipe'><input type='text' name='title' placeholder='Recipe Name'></div><br>
+  <br>
+
+  <span>Ingredients</span> <br>
+  <div id='ingredients'>
+  <input type='text' name='ingredient1' placeholder='Ingredients'>
+  <input type='text' placeholder='Amount' name='amount1'>
+  <input type='text' placeholder='Unit' name='unit1'>
+  </div>
+  <div id='ingredients'>
+  <input type='text' name='ingredient2' placeholder='Ingredients'>
+  <input type='text' placeholder='Amount' name='amount2'>
+  <input type='text' placeholder='Unit' name='unit2'>
+  </div>
+  <div id='ingredients'>
+  <input type='text' name='ingredient3' placeholder='Ingredients'>
+  <input type='text' placeholder='Amount' name='amount3'>
+  <input type='text' placeholder='Unit' name='unit3'>
+  </div>
+  <br>
+
+  <span>Instructions</span><br>
+  <div id='recipe'><input type='text' name='instructions' placeholder='Instructions' id='instructions'></div>
+  <button type='submit' class='myButton'>Add New Recipe</button>
+
+</form>
+
+<div id='content'>
+<h2>RECIPES</h2>
 <% @recipes.each do |recipe| %>
-  
-  <% @recipe_ingredients = [] %>
-  <% @ingredient_ids = [] %>
-  
+  <div class='card'>
+
   <h3><%= recipe.title %></h3>
-
-  <% @select_relations = @relations.select{|rel| rel[:recipe_id] == recipe[:id]} %>
-
-  <% @select_relations.each do |rel| %>
-    <% @ingredient_ids << rel[:ingredient_id] %>
-  <% end %>
   
-  <% @ingredient_ids.each do |id| %>
-      <% @ingredients.select{|ing| @ing = ing[:name] if ing[:id] == id} %>
-      <% @recipe_ingredients << @ing %>
-  <% end %>
-  
-  <% @hash = Hash[@ingredient_ids.zip @recipe_ingredients] %>
+  <p>
+    <% @select_relations = @relations.select{|rel| rel[:recipe_id] == recipe[:id]} %>
 
-  <% counter = 0 %>
-  <% @select_relations.each do |relation| %>
-    <ul>
-      <li><%= relation.amount %>
-      <%= relation.unit %>
-      <% @ing_id = relation[:ingredient_id] %>
-      <%= @hash[@ing_id] %></li>
-    </ul>
-  <% end %>
+    <% @select_relations.each do |relation| %>
+        <% @ing = @ingredients.select{|ing| ing[:id] == relation[:ingredient_id]} %>
+        <%= relation[:amount] %>
+        <%= relation[:unit] %>
+        <%= @ing[0][:name] %><br>
+    <% end %>
+  
+    <br>
+    <p><%= recipe.instructions %></p>
+  
+  </p>
+  </div>
   <br>
-  <p><%= recipe.instructions %></p>
-  <br>
-  <hr>
+
 <% end %>
+</div>
+
+<%# dynamic field formatting html %>
+<div class="container">
+  <div class="row">
+        <div class="control-group" id="fields">
+            <label class="control-label" for="field1">Nice Multiple Form Fields</label>
+            <div class="controls"> 
+                <form role="form" autocomplete="off">
+                    <div class="entry input-group col-xs-3">
+                        <input class="form-control" name="fields[]" type="text" placeholder="Type something" />
+                      <span class="input-group-btn">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            <br>
+            <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field :)</small>
+            </div>
+        </div>
+  </div>
+</div>

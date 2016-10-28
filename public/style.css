@@ -1,6 +1,7 @@
 body {
     margin: 35px auto;
     width: 640px;
+    margin-left: 35px;
 }
  
 header {
@@ -17,12 +18,23 @@ header h1 {
 header h1 a:link, header h1 a:visited {
     color: #444;
     text-decoration: none;
+    font-family: "Georgia";
 }
  
 header h2 {
     font-size: 16px;
     font-style: italic;
     color: #999;
+    font-family: "Georgia";
+    letter-spacing: 1px
+}
+
+body h2 {
+    font-size: 24px;
+    font-family: "Georgia";
+    /* text-decoration: underline; */
+    letter-spacing: 3px;
+    text-align: center;
 }
 
 h3 {
@@ -40,11 +52,50 @@ h4 {
 li {
     margin: -15px 0;
     font-family: "Georgia";
+    text-align: center;
 }
 
 br {
     display: block;
     margin: -35px 0 0;
+}
+
+p {
+    margin: 0 0 5px;
+    font-family: "Georgia";
+}
+    span {
+        font-family: "Georgia";
+        margin: 0 0 0;
+        text-align: left;
+    }
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: "Georgia";
+}
+
+div#content {
+    text-align: center
+}
+
+div#ingredients {
+    width: 100px !important;
+    white-space: nowrap;
+}
+
+div#recipt_title {
+    text-align: left
+}
+
+div#recipe {
+    width: 300px;
 }
 
 #main {
@@ -72,9 +123,10 @@ br {
  
 #edit textarea {
     height: 30px;
-    width: 480px;
+    width: 410px;
     padding: 10px;
     border: 1px solid #ddd;
+    font-family: "Georgia";
 }
  
 #edit input[type=submit] {
@@ -83,11 +135,13 @@ br {
     margin: -50px 0 0;
     border: 1px solid #ddd;
     background: white;
+    font-family: "Georgia";
 }
  
 #edit input[type=checkbox] {
     height: 50px;
     width: 20px;
+    font-family: "Georgia";
 }
  
 article {
@@ -112,11 +166,6 @@ article span {
     font-size: 0.8em;
 }
  
-p {
-    margin: 0 0 5px;
-    font-family: "Georgia";
-}
- 
 .meta {
     font-size: 0.8em;
     font-style: italic;
@@ -133,4 +182,63 @@ p {
 .links a {
     display: block;
     text-decoration: none;
+}
+
+.myButton {
+    background-color:#44c767;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:10px 20px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+.myButton:hover {
+    background-color:#5cbf2a;
+}
+
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    border: 1px solid grey;
+    border-width: .1px
+    border-radius: 2px
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 350px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 8px;
+}
+
+
+/* for dynamic form field formatting */
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
 }

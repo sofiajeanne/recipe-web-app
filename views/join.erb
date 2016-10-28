@@ -7,13 +7,11 @@
 
     <% @select_relations.each do |relation| %>
         <% @ing = @ingredients.select{|ing| ing[:id] == relation[:ingredient_id]} %>
-    
       <ul>
         <li><%= relation[:amount] %>
         <%= relation[:unit] %>
         <%= @ing[0][:name] %></li>
       </ul>
-
     <% end %>
   
     <br>
